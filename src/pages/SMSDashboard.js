@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './Dashboard.css'; // Same styles as Dashboard
+import "./Dashboard.css";
+
 
 const SMSDashboard = () => {
   const [campaigns, setCampaigns] = useState([]);
@@ -14,7 +15,15 @@ const SMSDashboard = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [isModalOpen, setModalOpen] = useState(false);
 
-  // Simulated SMS Delivery Data
+  const handleFileChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      fileUpload: e.target.files[0]
+    }));
+  };
+
+
+  // Simulate SMS Delivery
   const simulateSMSDelivery = (recipients) => {
     return recipients.map((recipient) => ({
       number: recipient,
@@ -23,7 +32,7 @@ const SMSDashboard = () => {
     }));
   };
 
-  // Add some static campaigns on page load
+  // Add initial campaigns on page load
   useEffect(() => {
     const initialCampaigns = [
       {
@@ -38,9 +47,184 @@ const SMSDashboard = () => {
         recipients: ["2233445566", "9988776655", "5566778899"],
         createdAt: new Date("2024-11-10"),
       },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899","2233445566", "9988776655", "5566778899","2233445566", "9988776655", "5566778899","2233445566", "9988776655", "5566778899"],
+
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+      {
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },{
+        campaignName: "Campaign 2",
+        messageContent: "Hurry up! Limited time offer!",
+        recipients: ["2233445566", "9988776655", "5566778899"],
+        createdAt: new Date("2024-11-10"),
+      },
+
     ];
 
-    // Simulate SMS Delivery for these campaigns
     const campaignsWithData = initialCampaigns.map((campaign) => {
       const deliveryData = simulateSMSDelivery(campaign.recipients);
       const totalSent = deliveryData.length;
@@ -61,7 +245,7 @@ const SMSDashboard = () => {
     setCampaigns(campaignsWithData);
   }, []);
 
-  // Toggle Modal
+  // Handle Modal Toggle
   const handleModalToggle = () => {
     setModalOpen(!isModalOpen);
   };
@@ -91,19 +275,17 @@ const SMSDashboard = () => {
     }
   };
 
-  // Submit SMS Campaign
+  // Handle Form Submit
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const deliveryData = simulateSMSDelivery(formData.recipients);
 
-    // Calculate analytics
     const totalSent = deliveryData.length;
     const delivered = deliveryData.filter((sms) => sms.status === "Delivered").length;
     const interested = deliveryData.filter((sms) => sms.interested && sms.status === "Delivered").length;
     const notInterested = delivered - interested;
 
-    // Add the campaign to the list
     const newCampaign = {
       campaignName: formData.campaignName,
       messageContent: formData.messageContent,
@@ -117,14 +299,12 @@ const SMSDashboard = () => {
 
     setCampaigns((prevData) => [...prevData, newCampaign]);
 
-    // Clear the form
     setFormData({
       campaignName: "",
       messageContent: "",
       recipients: [],
     });
 
-    // Close Modal
     setModalOpen(false);
   };
 
@@ -136,13 +316,18 @@ const SMSDashboard = () => {
     });
   };
 
+  // Calculate Totals
+  const calculateTotals = (key) => {
+    return campaigns.reduce((sum, campaign) => sum + campaign[key], 0);
+  };
+
   return (
     <main className="main-dashboard">
       <header className="dashboard-header">
         <h1>SMS Dashboard</h1>
         <div className="header-actions">
           <div className="date-filter">
-            <label>Start Date: </label>
+            <label>Start Date:</label>
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
@@ -151,7 +336,7 @@ const SMSDashboard = () => {
               endDate={endDate}
               dateFormat="yyyy/MM/dd"
             />
-            <label>End Date: </label>
+            <label>End Date:</label>
             <DatePicker
               selected={endDate}
               onChange={(date) => setEndDate(date)}
@@ -168,89 +353,159 @@ const SMSDashboard = () => {
         </div>
       </header>
 
-      {/* Modal for Creating Campaigns */}
       {isModalOpen && (
-        <div id="sms-campaign-modal" className="modal">
-          <div className="modal-content">
-            <span className="close-button" onClick={handleModalToggle}>
-              &times;
-            </span>
-            <h2>Create SMS Campaign</h2>
-            <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="campaignName">Campaign Name:</label>
-                <input
-                  type="text"
-                  id="campaignName"
-                  name="campaignName"
-                  value={formData.campaignName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="messageContent">Message Content:</label>
-                <textarea
-                  id="messageContent"
-                  name="messageContent"
-                  value={formData.messageContent}
-                  onChange={handleInputChange}
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-              <div className="form-group">
-                <label htmlFor="recipientsFile">Upload Recipients:</label>
-                <input
-                  type="file"
-                  id="recipientsFile"
-                  name="recipientsFile"
-                  accept=".txt, .csv"
-                  onChange={handleFileUpload}
-                />
-              </div>
-              <button type="submit">Send SMS</button>
-            </form>
-          </div>
+  <div id="import-modal" className="modal">
+    <div className="modal-content">
+      <span className="close-button" onClick={handleModalToggle}>
+        &times;
+      </span>
+      <h2> Create SMS Campaign</h2>
+      <form id="import-form" onSubmit={handleFormSubmit}>
+        <div className="form-group">
+          <label htmlFor="campaign-name">Campaign Name:</label>
+          <select
+            id="campaign-name" style={{width:"100%"}}
+            name="campaignName"
+            value={formData.campaignName}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="selected">Please Select</option>
+            <option value="ACRE BL">ACRE BL</option>
+            <option value="ACRE SME">ACRE SME</option>
+            <option value="CLIX">CLIX</option>
+            <option value="Stashfin BKT">Stashfin BKT</option>
+            <option value="Stashfin 180+">Stashfin 180+</option>
+            <option value="Stashfin 90+">Stashfin 90+</option>
+            <option value="South Stashfin">South Stashfin</option>
+            <option value="Stashfin East">Stashfin East</option>
+            <option value="Onecard FSB">Onecard FSB</option>
+            <option value="Incred Mum">Incred Mum</option>
+            <option value="Loantap">Loantap</option>
+            <option value="Triumph">Triumph</option>
+            <option value="Unicard Writeoff">Unicard Writeoff</option>
+            <option value="Creditfair">Creditfair</option>
+            <option value="Fatakpay">Fatakpay</option>
+            <option value="ICICI">ICICI</option>
+          </select>
         </div>
-      )}
+        <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <select
+            id="content"
+            name="content"
+            value={formData.content}
+            onChange={handleInputChange}
+            required
+            style={{ width: "100%" }}
+          >
+            <option value="">Select Content</option>
+            <option
+              value="a"
+              title="This is a gentle reminder to pay the overdue loan amount."
+            >
+              (A) Gentle Reminder
+            </option>
+            <option
+              value="b"
+              title="Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you."
+            >
+              (B) Loan Overdue Warning
+            </option>
+            <option
+              value="c"
+              title="Defaulting on repayment will damage credit scores like CIBIL, impacting your access to loans or financial help."
+            >
+              (C) Credit Score Impact
+            </option>
+            <option
+              value="d"
+              title="We can help you settle your loan. Keeping default on loan is bad for your credit score."
+            >
+              (D) Loan Settlement Help
+            </option>
+          </select>
+        </div>
 
-      {/* Analytics Cards */}
-      <section className="analytics-cards" style={{ display: "flex", gap: "62px" }}>
+        </div>
+        <div className="form-group">
+          <label htmlFor="date-time">Date and Time:</label>
+          <input
+            type="datetime-local"
+            id="date-time"
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="file-upload">Upload File:</label>
+            <input
+              type="file"
+              id="file-upload"
+              name="file-upload"
+            accept=".csv, .xls, .xlsx"
+            onChange={handleFileChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <button type="submit" id="process-btn">
+            Process
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
+      <section className="analytics-summary">
         <div className="card">
           <h3>Total Sent</h3>
-          <p>{filterCampaignsByDate().reduce((sum, c) => sum + c.totalSent, 0)}</p>
+          {/* <p>{calculateTotals("totalSent")}</p> */}
+          <p>3,38,610</p>
         </div>
         <div className="card">
           <h3>Delivered</h3>
-          <p>{filterCampaignsByDate().reduce((sum, c) => sum + c.delivered, 0)}</p>
+          {/* <p>{calculateTotals("delivered")}</p> */}
+          <p>2,56,300</p>
+        </div>
+        <div className="card">
+          <h3>Not Delivered</h3>
+          {/* <p>{calculateTotals("notDelivered")}</p> */}
+          <p>82,310</p>
         </div>
         <div className="card">
           <h3>Interested</h3>
-          <p>{filterCampaignsByDate().reduce((sum, c) => sum + c.interested, 0)}</p>
+          {/* <p>{calculateTotals("interested")}</p> */}
+          <p>1,80,770</p>
         </div>
         <div className="card">
           <h3>Not Interested</h3>
-          <p>{filterCampaignsByDate().reduce((sum, c) => sum + c.notInterested, 0)}</p>
+          {/* <p>{calculateTotals("notInterested")}</p> */}
+          <p>75,530</p>
         </div>
       </section>
 
-      {/* Campaign Table */}
       <section className="campaign-table">
-        <h2>SMS Campaigns</h2>
+       
         <table>
           <thead>
             <tr>
               <th>Campaign Name</th>
-              <th>Message Content</th>
+              {/* <th>Message Content</th> */}
               <th>Total Sent</th>
               <th>Delivered</th>
+              <th>Not Delivered</th>
               <th>Interested</th>
               <th>Not Interested</th>
               <th>Date Created</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {filterCampaignsByDate().map((campaign, index) => (
               <tr key={index}>
                 <td>{campaign.campaignName}</td>
@@ -262,7 +517,178 @@ const SMSDashboard = () => {
                 <td>{new Date(campaign.createdAt).toLocaleString()}</td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
+          {/* <tbody>
+          <tr>
+  <td>fatak pay 160+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>fatak pay 160+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>ACRE BL</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>fatak pay 160+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>ACRE BL</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>fatak pay 160+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>ACRE BL</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>ACRE SME</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>CLIX</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>Stashfin 90+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>South Stashfin</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+<tr>
+  <td>fatak pay 160+</td>
+  <td>4500</td>
+  <td>3400</td>
+  <td>2300</td>
+  <td>1100</td>
+  <td>01-11-24</td>
+ 
+</tr>
+
+          </tbody> */}
+
+
+<tbody>
+    {[
+      { name: "ACRE BL", totalSent: 5000, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "ACRE SME", totalSent: 4500, deliveredPercent: 75, interestedPercent: 65 },
+      { name: "CLIX", totalSent: 4200, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "Stashfin BKT", totalSent: 4600, deliveredPercent: 72, interestedPercent: 62 },
+      { name: "Stashfin 180+", totalSent: 5000, deliveredPercent: 85, interestedPercent: 75 },
+      { name: "Stashfin 90+", totalSent: 4800, deliveredPercent: 70, interestedPercent: 60 },
+      { name: "South Stashfin", totalSent: 5100, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Stashfin East", totalSent: 4400, deliveredPercent: 74, interestedPercent: 64 },
+      { name: "Onecard FSB", totalSent: 4700, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "Incred Mum", totalSent: 4300, deliveredPercent: 77, interestedPercent: 67 },
+      { name: "Loantap", totalSent: 4900, deliveredPercent: 79, interestedPercent: 69 },
+      { name: "Triumph", totalSent: 4500, deliveredPercent: 73, interestedPercent: 63 },
+      { name: "Unicard Writeoff", totalSent: 5200, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "Creditfair", totalSent: 4800, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Fatakpay", totalSent: 4700, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "ICICI", totalSent: 4900, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "ACRE BL", totalSent: 5000, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "ACRE SME", totalSent: 4500, deliveredPercent: 75, interestedPercent: 65 },
+      { name: "CLIX", totalSent: 4200, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "Stashfin BKT", totalSent: 4600, deliveredPercent: 72, interestedPercent: 62 },
+      { name: "Stashfin 180+", totalSent: 5000, deliveredPercent: 85, interestedPercent: 75 },
+      { name: "Stashfin 90+", totalSent: 4800, deliveredPercent: 70, interestedPercent: 60 },
+      { name: "South Stashfin", totalSent: 5100, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Stashfin East", totalSent: 4400, deliveredPercent: 74, interestedPercent: 64 },
+      { name: "Onecard FSB", totalSent: 4700, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "Incred Mum", totalSent: 4300, deliveredPercent: 77, interestedPercent: 67 },
+      { name: "Loantap", totalSent: 4900, deliveredPercent: 79, interestedPercent: 69 },
+      { name: "Triumph", totalSent: 4500, deliveredPercent: 73, interestedPercent: 63 },
+      { name: "Unicard Writeoff", totalSent: 5200, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "Creditfair", totalSent: 4800, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Fatakpay", totalSent: 4700, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "ICICI", totalSent: 4900, deliveredPercent: 82, interestedPercent: 72 },
+
+
+
+    ].map((campaign, index) => {
+      const delivered = Math.round(campaign.totalSent * (campaign.deliveredPercent / 100));
+      const notDelivered = campaign.totalSent - delivered;
+      const interested = Math.round(delivered * (campaign.interestedPercent / 100));
+      const notInterested = delivered - interested;
+      const createdAt = new Date().toLocaleDateString();
+
+      return (
+        <tr key={index}>
+          <td>{campaign.name}</td>
+          <td>{campaign.totalSent}</td>
+          <td>{delivered}</td>
+          <td>{notDelivered}</td>
+          <td>{interested}</td>
+          <td>{notInterested}</td>
+          <td>{createdAt}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+
         </table>
       </section>
     </main>

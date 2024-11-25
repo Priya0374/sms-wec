@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"; // Only import Navigate once
 import Sidebar from "./component/Sidebar"; // Assuming Sidebar is a component
 import LoginPage from "./pages/LoginPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 // Import content pages for the routes
 import Dashboard from "./pages/dashboard";
@@ -9,6 +10,7 @@ import SMSDashboard from "./pages/SMSDashboard";
 import IvrAnalytics from "./pages/IvrAnalytics";
 import WhatsappAnalytics from "./pages/WhatsappAnalytics";
 import CampaignReports from "./pages/CampaignReports";
+
 
 function App() {
   // State to manage login status
@@ -19,6 +21,9 @@ function App() {
     setIsLoggedIn(true);
   };
 
+  const onLogout = () => {
+    setIsLoggedIn(false); // Reset the login state
+  };
   return (
     <Router>
       <div className="app">
@@ -42,7 +47,14 @@ function App() {
             {/* Protected routes for logged-in users */}
             {isLoggedIn ? (
               <>
-                <Route path="/dashboard" element={<Dashboard />} />
+               <Route
+    path="/dashboard"
+    element={
+        <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <Dashboard />
+        </ProtectedRoute>
+    }
+/>
                 <Route path="/sms-analytics" element={<SMSDashboard />} />
                 <Route path="/ivr-analytics" element={<IvrAnalytics />} />
                 <Route path="/whatsapp-analytics" element={<WhatsappAnalytics />} />

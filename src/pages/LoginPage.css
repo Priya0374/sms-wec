@@ -1,15 +1,5 @@
-/* General styles */
-/* body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #9face6);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-   */
-  /* Main login container */
+
+
   .login-page {
     display: flex;
     justify-content: center;
@@ -23,8 +13,8 @@
     font-family: Arial, sans-serif;
     /* background: 
       linear-gradient(135deg, rgba(116, 235, 213, 0.8), rgba(159, 172, 230, 0.8)), 
-      url("../img/bg-img.jpg"); */
-       /* Background image */
+      url("../img/bg-img.jpg");  */
+       
     background-size: cover; /* Make the image cover the entire area */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -32,11 +22,6 @@
   }
   
 
-  .content {
-    margin-left: 250px;
-    padding: 20px;
-    /* background: #f0f0f0; */
-    min-height: 100vh;}
 
   .login-container {
     background: white;

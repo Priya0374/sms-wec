@@ -86,7 +86,7 @@ button {
 .card h3 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #a9a9d5;
+  color: #000;
 }
 
 .card p {
@@ -304,12 +304,6 @@ button {
   padding: 20px 40px;
 }
 
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
 
 .header-actions select,
 .header-actions button {
@@ -417,7 +411,7 @@ button[type="submit"]:hover {
 
 .card small {
   font-size: 14px;
-  color: #777;
+  color: 	#008000;
 }
 
 /* Charts Section */
@@ -476,18 +470,19 @@ table th {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
+  /* background: #ffffff; */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
   max-width: 600px;
   margin: 20px auto;
   font-family: Arial, sans-serif;
+  font-size: 13px;
 }
 
 /* Label styling */
 .date-filter label {
-  font-size: 1em;
+  font-size: 13px;
   font-weight: bold;
   color: #333;
   margin-right: 10px;
@@ -576,6 +571,163 @@ table th {
 
 .action-icon:hover {
   color: #0056b3;
+}
+
+
+
+
+.action-icon_download {
+  color: #0056b3;
+  font-size: 1.2rem;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.action-icon_download:hover {
+  color:green;
+}
+
+
+
+
+/* Modal Background */
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Modal Content */
+.modal-content {
+  width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+/* Form Header */
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+} */
+
+input,
+textarea,
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 5px;
+  outline: none;
+}
+
+input[type="file"] {
+  padding: 5px;
+  border: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #007bff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select {
+  cursor: pointer;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Modal responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
 }
 
 

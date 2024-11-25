@@ -29,6 +29,14 @@ const CampaignReports = () => {
     }));
   };
 
+
+  const handleFileChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      fileUpload: e.target.files[0]
+    }));
+  };
+
   // Handle Channel Selection
   const handleChannelSelection = (channel) => {
     setFormData((prevData) => ({
@@ -122,25 +130,101 @@ const CampaignReports = () => {
 
       {/* Modal for Creating Campaigns */}
       {isModalOpen && (
-        <div id="campaign-modal" className="modal">
-          <div className="modal-content">
-            <span className="close-button" onClick={handleModalToggle}>
-              &times;
-            </span>
-            <h2>Create Campaign</h2>
-            <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="campaignName">Campaign Name:</label>
-                <input
-                  type="text"
-                  id="campaignName"
-                  name="campaignName"
-                  value={formData.campaignName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
+       <div id="import-modal" className="modal">
+       <div className="modal-content">
+         <span className="close-button" onClick={handleModalToggle}>
+           &times;
+         </span>
+         <h2>Import Data</h2>
+         <form id="import-form" onSubmit={handleFormSubmit}>
+           <div className="form-group">
+             <label htmlFor="campaign-name">Campaign Name:</label>
+             <select
+               id="campaign-name" style={{width:"100%"}}
+               name="campaignName"
+               value={formData.campaignName}
+               onChange={handleInputChange}
+               required
+             >
+                <option value="selected">Please Select</option>
+               <option value="ACRE BL">ACRE BL</option>
+               <option value="ACRE SME">ACRE SME</option>
+               <option value="CLIX">CLIX</option>
+               <option value="Stashfin BKT">Stashfin BKT</option>
+               <option value="Stashfin 180+">Stashfin 180+</option>
+               <option value="Stashfin 90+">Stashfin 90+</option>
+               <option value="South Stashfin">South Stashfin</option>
+               <option value="Stashfin East">Stashfin East</option>
+               <option value="Onecard FSB">Onecard FSB</option>
+               <option value="Incred Mum">Incred Mum</option>
+               <option value="Loantap">Loantap</option>
+               <option value="Triumph">Triumph</option>
+               <option value="Unicard Writeoff">Unicard Writeoff</option>
+               <option value="Creditfair">Creditfair</option>
+               <option value="Fatakpay">Fatakpay</option>
+               <option value="ICICI">ICICI</option>
+             </select>
+           </div>
+           <div className="form-group">
+             <label htmlFor="content">Content:</label>
+             <select
+               id="content"
+               name="content"
+               value={formData.content}
+               onChange={handleInputChange}
+               required
+               style={{ width: "100%" }}
+             >
+               <option value="">Select Content</option>
+               <option
+                 value="a"
+                 title="This is a gentle reminder to pay the overdue loan amount."
+               >
+                 (A) Gentle Reminder
+               </option>
+               <option
+                 value="b"
+                 title="Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you."
+               >
+                 (B) Loan Overdue Warning
+               </option>
+               <option
+                 value="c"
+                 title="Defaulting on repayment will damage credit scores like CIBIL, impacting your access to loans or financial help."
+               >
+                 (C) Credit Score Impact
+               </option>
+               <option
+                 value="d"
+                 title="We can help you settle your loan. Keeping default on loan is bad for your credit score."
+               >
+                 (D) Loan Settlement Help
+               </option>
+             </select>
+           </div>
+           <div className="form-group">
+             <label htmlFor="date-time">Date and Time:</label>
+             <input
+               type="datetime-local"
+               id="date-time"
+               name="dateTime"
+               value={formData.dateTime}
+               onChange={handleInputChange}
+               required
+             />
+           </div>
+           {/* <div className="form-group">
+             <label htmlFor="file-upload">Upload File:</label>
+               <input
+                 type="file"
+                 id="file-upload"
+                 name="file-upload"
+               accept=".csv, .xls, .xlsx"
+               onChange={handleFileChange}
+               required
+             />
+           </div> */}
+            <div className="form-group">
                 <label>Channels:</label>
                 <div className="channel-options">
                   <label>
@@ -151,14 +235,14 @@ const CampaignReports = () => {
                     />
                     SMS
                   </label>
-                  <label>
+                  {/* <label>
                     <input
                       type="checkbox"
                       checked={formData.channels.includes("IVR")}
                       onChange={() => handleChannelSelection("IVR")}
                     />
                     IVR
-                  </label>
+                  </label> */}
                   <label>
                     <input
                       type="checkbox"
@@ -169,17 +253,7 @@ const CampaignReports = () => {
                   </label>
                 </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="messageContent">Message Content:</label>
-                <textarea
-                  id="messageContent"
-                  name="messageContent"
-                  value={formData.messageContent}
-                  onChange={handleInputChange}
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
+             
               <div className="form-group">
                 <label htmlFor="customerFile">Upload Customer Data:</label>
                 <input
@@ -211,17 +285,256 @@ const CampaignReports = () => {
             </tr>
           </thead>
           <tbody>
-            {filterCampaignsByDate().map((campaign, index) => (
-              <tr key={index}>
-                <td>{campaign.campaignName}</td>
-                <td>{campaign.channels.join(", ")}</td>
-                <td>{campaign.customerData.length} Customers</td>
-                <td>{campaign.messageContent}</td>
-                <td>{campaign.status}</td>
-                <td>{new Date(campaign.createdAt).toLocaleString()}</td>
-              </tr>
-            ))}
-          </tbody>
+  <tr>
+    <td>ACRE BL</td>
+    <td>SMS, WhatsApp</td>
+    <td>500 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>ACRE SME</td>
+    <td>SMS</td>
+    <td>300 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>CLIX</td>
+    <td>WhatsApp</td>
+    <td>200 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin BKT</td>
+    <td>SMS, WhatsApp</td>
+    <td>400 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin 180+</td>
+    <td>SMS</td>
+    <td>250 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin 90+</td>
+    <td>WhatsApp</td>
+    <td>150 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>South Stashfin</td>
+    <td>SMS, WhatsApp</td>
+    <td>300 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin East</td>
+    <td>SMS</td>
+    <td>320 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Onecard FSB</td>
+    <td>WhatsApp</td>
+    <td>220 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Incred Mum</td>
+    <td>SMS</td>
+    <td>180 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Loantap</td>
+    <td>SMS, WhatsApp</td>
+    <td>200 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Triumph</td>
+    <td>WhatsApp</td>
+    <td>250 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Unicard Writeoff</td>
+    <td>SMS</td>
+    <td>170 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Creditfair</td>
+    <td>SMS, WhatsApp</td>
+    <td>300 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Fatakpay</td>
+    <td>WhatsApp</td>
+    <td>210 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>ICICI</td>
+    <td>SMS</td>
+    <td>400 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>ACRE SME</td>
+    <td>SMS</td>
+    <td>300 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>CLIX</td>
+    <td>WhatsApp</td>
+    <td>200 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin BKT</td>
+    <td>SMS, WhatsApp</td>
+    <td>400 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin 180+</td>
+    <td>SMS</td>
+    <td>250 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin 90+</td>
+    <td>WhatsApp</td>
+    <td>150 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>South Stashfin</td>
+    <td>SMS, WhatsApp</td>
+    <td>300 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Stashfin East</td>
+    <td>SMS</td>
+    <td>320 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Onecard FSB</td>
+    <td>WhatsApp</td>
+    <td>220 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Incred Mum</td>
+    <td>SMS</td>
+    <td>180 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Loantap</td>
+    <td>SMS, WhatsApp</td>
+    <td>200 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Triumph</td>
+    <td>WhatsApp</td>
+    <td>250 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Unicard Writeoff</td>
+    <td>SMS</td>
+    <td>170 Customers</td>
+    <td>This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Creditfair</td>
+    <td>SMS, WhatsApp</td>
+    <td>300 Customers</td>
+    <td>Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>Fatakpay</td>
+    <td>WhatsApp</td>
+    <td>210 Customers</td>
+    <td>Defaulting on repayment will damage credit scores like CIBIL. Please pay immediately to improve your score.</td>
+    <td>In Progress</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+  <tr>
+    <td>ICICI</td>
+    <td>SMS</td>
+    <td>400 Customers</td>
+    <td>We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.</td>
+    <td>Completed</td>
+    <td>{new Date().toLocaleString()}</td>
+  </tr>
+</tbody>
+
         </table>
       </section>
     </main>

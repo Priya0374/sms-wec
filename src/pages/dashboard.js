@@ -9,6 +9,7 @@ import { FaDownload } from "react-icons/fa";
 import {FaEdit} from  "react-icons/fa"
 import DashboardSummary from './DashboardSummary';
 import { ImOpt } from 'react-icons/im';
+import Settings from './Settings';
 
 // Register chart.js components
 ChartJS.register(
@@ -152,10 +153,11 @@ const Dashboard = () => {
             Import Data
           </button>
         </div>
+        <Settings />
       </header>
 
       {/* Modal Structure */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div id="import-modal" className="modal">
           <div className="modal-content">
             <span className="close-button" onClick={handleModalToggle}>
@@ -217,7 +219,115 @@ const Dashboard = () => {
             </form>
           </div>
         </div>
-      )}
+      )} */}
+
+
+
+{isModalOpen && (
+  <div id="import-modal" className="modal">
+    <div className="modal-content">
+      <span className="close-button" onClick={handleModalToggle}>
+        &times;
+      </span>
+      <h2>Import Data</h2>
+      <form id="import-form" onSubmit={handleFormSubmit}>
+        <div className="form-group">
+          <label htmlFor="campaign-name">Campaign Name:</label>
+          <select
+            id="campaign-name" style={{width:"100%"}}
+            name="campaignName"
+            value={formData.campaignName}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="selected">Please Select</option>
+            <option value="ACRE BL">ACRE BL</option>
+            <option value="ACRE SME">ACRE SME</option>
+            <option value="CLIX">CLIX</option>
+            <option value="Stashfin BKT">Stashfin BKT</option>
+            <option value="Stashfin 180+">Stashfin 180+</option>
+            <option value="Stashfin 90+">Stashfin 90+</option>
+            <option value="South Stashfin">South Stashfin</option>
+            <option value="Stashfin East">Stashfin East</option>
+            <option value="Onecard FSB">Onecard FSB</option>
+            <option value="Incred Mum">Incred Mum</option>
+            <option value="Loantap">Loantap</option>
+            <option value="Triumph">Triumph</option>
+            <option value="Unicard Writeoff">Unicard Writeoff</option>
+            <option value="Creditfair">Creditfair</option>
+            <option value="Fatakpay">Fatakpay</option>
+            <option value="ICICI">ICICI</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <select
+            id="content"
+            name="content"
+            value={formData.content}
+            onChange={handleInputChange}
+            required
+            style={{ width: "100%" }}
+          >
+            <option value="">Select Content</option>
+            <option
+              value="a"
+              title="This is a gentle reminder to pay the overdue loan amount."
+            >
+              (A) Gentle Reminder
+            </option>
+            <option
+              value="b"
+              title="Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you."
+            >
+              (B) Loan Overdue Warning
+            </option>
+            <option
+              value="c"
+              title="Defaulting on repayment will damage credit scores like CIBIL, impacting your access to loans or financial help."
+            >
+              (C) Credit Score Impact
+            </option>
+            <option
+              value="d"
+              title="We can help you settle your loan. Keeping default on loan is bad for your credit score."
+            >
+              (D) Loan Settlement Help
+            </option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="date-time">Date and Time:</label>
+          <input
+            type="datetime-local"
+            id="date-time"
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="file-upload">Upload File:</label>
+            <input
+              type="file"
+              id="file-upload"
+              name="file-upload"
+            accept=".csv, .xls, .xlsx"
+            onChange={handleFileChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <button type="submit" id="process-btn">
+            Process
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
 
       {/* Analytics Summary */}
       <DashboardSummary />
@@ -247,10 +357,10 @@ const Dashboard = () => {
       </thead>
       <tbody>
         <tr>
-          <td>Campaign A</td>
+          <td>Stashfin</td>
           <td>2024/11/01 10:00 AM</td>
           <td>Welcome SMS</td>
-          <td>welcome_sms.xlsx</td>
+          <td>stashfin.xlsx</td>
           <td>
            <button title="Download" style={{display:"inline", margin:"11px"}}>
               <FaDownload className="action-icon" />
@@ -261,7 +371,8 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign B</td>
+          <td>ACRE BL
+          </td>
           <td>2024/11/02 02:30 PM</td>
           <td>Promotional Offer</td>
           <td>promo_offer.xlsx</td>
@@ -275,7 +386,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign C</td>
+          <td>ACRE SME</td>
           <td>2024/11/03 09:15 AM</td>
           <td>Feedback Request</td>
           <td>feedback.xlsx</td>
@@ -289,7 +400,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign D</td>
+          <td>CLIX</td>
           <td>2024/11/04 01:00 PM</td>
           <td>Event Invitation</td>
           <td>event_invite.xlsx</td>
@@ -303,7 +414,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign E</td>
+          <td>Stashfin BKT</td>
           <td>2024/11/05 11:45 AM</td>
           <td>Customer Survey</td>
           <td>survey.xlsx</td>
@@ -317,7 +428,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign F</td>
+          <td>Stashfin 180+</td>
           <td>2024/11/06 04:00 PM</td>
           <td>Service Reminder</td>
           <td>reminder.xlsx</td>
@@ -331,7 +442,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign G</td>
+          <td>Stashfin 90+</td>
           <td>2024/11/07 03:30 PM</td>
           <td>Discount Announcement</td>
           <td>discount.xlsx</td>
@@ -345,7 +456,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign H</td>
+          <td>South Stashfin</td>
           <td>2024/11/08 12:00 PM</td>
           <td>Newsletter</td>
           <td>newsletter.xlsx</td>
@@ -359,7 +470,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign I</td>
+          <td>Stashfin East</td>
           <td>2024/11/09 09:45 AM</td>
           <td>Special Offers</td>
           <td>special_offers.xlsx</td>
@@ -373,7 +484,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign J</td>
+          <td>Onecard FSB</td>
           <td>2024/11/10 10:30 AM</td>
           <td>Membership Renewal</td>
           <td>membership.xlsx</td>
@@ -401,7 +512,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign L</td>
+          <td>Incred Mum</td>
           <td>2024/11/12 06:00 PM</td>
           <td>Flash Sale</td>
           <td>flash_sale.xlsx</td>
@@ -415,7 +526,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign M</td>
+          <td>Loantap</td>
           <td>2024/11/13 02:45 PM</td>
           <td>Follow-Up Reminder</td>
           <td>followup.xlsx</td>
@@ -429,7 +540,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign N</td>
+          <td>Triumph</td>
           <td>2024/11/14 07:30 PM</td>
           <td>Account Activation</td>
           <td>activation.xlsx</td>
@@ -457,7 +568,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign P</td>
+          <td>Unicard Writeoff</td>
           <td>2024/11/16 04:45 PM</td>
           <td>Product Launch</td>
           <td>product_launch.xlsx</td>
@@ -471,7 +582,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign Q</td>
+          <td>Creditfair</td>
           <td>2024/11/17 08:00 AM</td>
           <td>Weekly Update</td>
           <td>weekly_update.xlsx</td>
@@ -485,7 +596,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign R</td>
+          <td>Fatakpay</td>
           <td>2024/11/18 05:30 PM</td>
           <td>Holiday Sale</td>
           <td>holiday_sale.xlsx</td>
@@ -499,7 +610,7 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign S</td>
+          <td>ICICI</td>
           <td>2
             024/11/19 03:15 PM</td>
           <td>Service Alert</td>
@@ -514,10 +625,10 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign T</td>
-          <td>2024/11/20 02:00 PM</td>
-          <td>Feedback Reminder</td>
-          <td>feedback_reminder.xlsx</td>
+        <td>Creditfair</td>
+          <td>2024/11/17 08:00 AM</td>
+          <td>Weekly Update</td>
+          <td>weekly_update.xlsx</td>
           <td>
            <button title="Download" style={{display:"inline", margin:"11px"}}>
               <FaDownload className="action-icon" />
@@ -528,12 +639,12 @@ const Dashboard = () => {
           </td>
         </tr>
         <tr>
-          <td>Campaign U</td>
-          <td>2024/11/21 11:00 AM</td>
-          <td>Customer Rewards</td>
-          <td>rewards.xlsx</td>
+        <td>Creditfair</td>
+          <td>2024/11/17 08:00 AM</td>
+          <td>Weekly Update</td>
+          <td>weekly_update.xlsx</td>
           <td>
-            <button title="Download" style={{display:"inline", margin:"11px"}}>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
               <FaDownload className="action-icon" />
             </button>
             <button title="Edit">
@@ -541,6 +652,219 @@ const Dashboard = () => {
             </button>
           </td>
         </tr>
+        <tr>
+          <td>ACRE SME</td>
+          <td>2024/11/03 09:15 AM</td>
+          <td>Feedback Request</td>
+          <td>feedback.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>CLIX</td>
+          <td>2024/11/04 01:00 PM</td>
+          <td>Event Invitation</td>
+          <td>event_invite.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin BKT</td>
+          <td>2024/11/05 11:45 AM</td>
+          <td>Customer Survey</td>
+          <td>survey.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 180+</td>
+          <td>2024/11/06 04:00 PM</td>
+          <td>Service Reminder</td>
+          <td>reminder.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 90+</td>
+          <td>2024/11/07 03:30 PM</td>
+          <td>Discount Announcement</td>
+          <td>discount.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+      
+        <tr>
+          <td>ACRE SME</td>
+          <td>2024/11/03 09:15 AM</td>
+          <td>Feedback Request</td>
+          <td>feedback.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>CLIX</td>
+          <td>2024/11/04 01:00 PM</td>
+          <td>Event Invitation</td>
+          <td>event_invite.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin BKT</td>
+          <td>2024/11/05 11:45 AM</td>
+          <td>Customer Survey</td>
+          <td>survey.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 180+</td>
+          <td>2024/11/06 04:00 PM</td>
+          <td>Service Reminder</td>
+          <td>reminder.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 90+</td>
+          <td>2024/11/07 03:30 PM</td>
+          <td>Discount Announcement</td>
+          <td>discount.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+      
+        <tr>
+          <td>ACRE SME</td>
+          <td>2024/11/03 09:15 AM</td>
+          <td>Feedback Request</td>
+          <td>feedback.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>CLIX</td>
+          <td>2024/11/04 01:00 PM</td>
+          <td>Event Invitation</td>
+          <td>event_invite.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin BKT</td>
+          <td>2024/11/05 11:45 AM</td>
+          <td>Customer Survey</td>
+          <td>survey.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 180+</td>
+          <td>2024/11/06 04:00 PM</td>
+          <td>Service Reminder</td>
+          <td>reminder.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Stashfin 90+</td>
+          <td>2024/11/07 03:30 PM</td>
+          <td>Discount Announcement</td>
+          <td>discount.xlsx</td>
+          <td>
+           <button title="Download" style={{display:"inline", margin:"11px"}}>
+              <FaDownload className="action-icon" />
+            </button>
+            <button title="Edit">
+              <FaEdit className="action-icon" />
+            </button>
+          </td>
+        </tr>
+      
       </tbody>
     </table>
   </div>

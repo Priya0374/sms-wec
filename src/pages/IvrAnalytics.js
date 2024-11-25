@@ -104,6 +104,11 @@ const IvrDashboard = () => {
     setModalOpen(false);
   };
 
+
+
+
+
+  
   const updateCampaignStats = (campaignId, actionType) => {
     setTableData((prevData) =>
       prevData.map((campaign) => {
@@ -175,7 +180,7 @@ const IvrDashboard = () => {
         <h1>IVR Dashboard</h1>
         <div className="header-actions">
           <div className="date-filter">
-            <label>Date: </label>
+            <label> Start Date: </label>
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
@@ -203,51 +208,98 @@ const IvrDashboard = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div id="import-modal" className="modal">
-          <div className="modal-content">
-            <span className="close-button" onClick={handleModalToggle}>
-              &times;
-            </span>
-            <h2>Create IVR Campaign</h2>
-            <form id="import-form" onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label>Campaign Name:</label>
-                <input
-                  type="text"
-                  name="campaignName"
-                  value={formData.campaignName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Date and Time:</label>
-                <input
-                  type="datetime-local"
-                  name="dateTime"
-                  value={formData.dateTime}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Content:</label>
-                <textarea
-                  name="content"
-                  value={formData.content}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Upload File:</label>
-                <input type="file" accept=".csv, .xls, .xlsx" onChange={handleFileChange} />
-              </div>
-              <button type="submit">Create</button>
-            </form>
-          </div>
+  <div id="import-modal" className="modal">
+    <div className="modal-content">
+      <span className="close-button" onClick={handleModalToggle}>
+        &times;
+      </span>
+      <h2>Create IVR Campaign</h2>
+      <form id="import-form" onSubmit={handleFormSubmit}>
+        <div className="form-group">
+          <label htmlFor="campaign-name">Campaign Name:</label>
+          <select
+            id="campaign-name" style={{width:"100%"}}
+            name="campaignName"
+            value={formData.campaignName}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="selected">Please Select</option>
+            <option value="ACRE BL">ACRE BL</option>
+            <option value="ACRE SME">ACRE SME</option>
+            <option value="CLIX">CLIX</option>
+            <option value="Stashfin BKT">Stashfin BKT</option>
+            <option value="Stashfin 180+">Stashfin 180+</option>
+            <option value="Stashfin 90+">Stashfin 90+</option>
+            <option value="South Stashfin">South Stashfin</option>
+            <option value="Stashfin East">Stashfin East</option>
+            <option value="Onecard FSB">Onecard FSB</option>
+            <option value="Incred Mum">Incred Mum</option>
+            <option value="Loantap">Loantap</option>
+            <option value="Triumph">Triumph</option>
+            <option value="Unicard Writeoff">Unicard Writeoff</option>
+            <option value="Creditfair">Creditfair</option>
+            <option value="Fatakpay">Fatakpay</option>
+            <option value="ICICI">ICICI</option>
+          </select>
         </div>
-      )}
+        <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <select
+  id="content"
+  name="content"
+  value={formData.content}
+  onChange={handleInputChange}
+  required
+  style={{width:"100%"}}
+>
+  <option value="a" title="This is a gentle reminder to pay the overdue loan amount. Press 1 to pay the dues now.">
+    <strong>(A)</strong> This is a gentle reminder to pay the overdue loan amount.
+  </option>
+  <option value="b" title="Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you. Press 1 to pay the dues now.">
+   <strong>(B)</strong>  Your loan is overdue. Kindly pay immediately to avoid field recovery team visiting you.
+  </option>
+  <option value="c" title="Defaulting on repayment will damage credit scores like CIBIL, impacting your access to loans or financial help. Please pay immediately to improve your score.">
+  <strong>(c)</strong>Defaulting on repayment will damage credit scores like CIBIL.
+  </option>
+  <option value="d" title="We can help you settle your loan. Keeping default on loan is bad for your credit score. Please press 1 for a call back.">
+    <strong>(D)</strong>We can help you settle your loan. Keeping default on loan is bad for your credit score.
+  </option>
+</select>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="date-time">Date and Time:</label>
+          <input
+            type="datetime-local"
+            id="date-time"
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="file-upload">Upload File:</label>
+            <input
+              type="file"
+              id="file-upload"
+              name="file-upload"
+            accept=".csv, .xls, .xlsx"
+            onChange={handleFileChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <button type="submit" id="process-btn">
+            Process
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
 
       {/* Analytics */}
       {/* <section className="analytics-summary">
@@ -261,43 +313,41 @@ const IvrDashboard = () => {
 <section className="analytics-summary">
   <div className="card">
     <h3>Total Numbers</h3>
-    <p>{ivrStats.totalCalls}</p>
+    <p>3,00,000</p>
   </div>
   <div className="card">
-    <h3>Attended Calls</h3>
-    <p>{ivrStats.attendedCalls}</p>
+    <h3>Attempts Calls</h3>
+    {/* <p>{ivrStats.attendedCalls}</p> */}
     <p>
-      {(ivrStats.attendedCalls / ivrStats.totalCalls * 100).toFixed(2)}% of total
+      {/* {(ivrStats.attendedCalls / ivrStats.totalCalls * 100).toFixed(2)}% of total */}
+      2,63,000
     </p>
   </div>
   <div className="card">
-    <h3>Interested Delivery</h3>
-    <p>{ivrStats.interested}</p>
+    <h3>No Response</h3>
+    {/* <p>{ivrStats.interested}</p> */}
     <p>
-      {(ivrStats.interested / ivrStats.totalCalls * 100).toFixed(2)}% of total
+      {/* {(ivrStats.interested / ivrStats.totalCalls * 100).toFixed(2)}% of total */}
+      37,000
     </p>
   </div>
   <div className="card">
-    <h3>Not Interested Delivery</h3>
-    <p>{ivrStats.notInterested}</p>
+    <h3>Interested</h3>
+    {/* <p>{ivrStats.notInterested}</p> */}
     <p>
-      {(ivrStats.notInterested / ivrStats.totalCalls * 100).toFixed(2)}% of total
+      {/* {(ivrStats.notInterested / ivrStats.totalCalls * 100).toFixed(2)}% of total */}
+      1,89,000
     </p>
   </div>
   <div className="card">
-    <h3>Double SMS Sent</h3>
-    <p>{ivrStats.doubleSms}</p>
+    <h3>Not Interested</h3>
+    {/* <p>{ivrStats.doubleSms}</p> */}
     <p>
-      {(ivrStats.doubleSms / ivrStats.totalCalls * 100).toFixed(2)}% of total
+      {/* {(ivrStats.doubleSms / ivrStats.totalCalls * 100).toFixed(2)}% of total */}
+      1,26,000
     </p>
   </div>
-  <div className="card">
-    <h3>Telecaller Assigned</h3>
-    <p>{ivrStats.telecallerAssigned}</p>
-    <p>
-      {(ivrStats.telecallerAssigned / ivrStats.totalCalls * 100).toFixed(2)}% of total
-    </p>
-  </div>
+
 </section>
 
 
@@ -306,16 +356,18 @@ const IvrDashboard = () => {
         <table>
           <thead>
             <tr>
-              <th>Campaign Name</th>
-              <th>Date and Time</th>
-              <th>Content</th>
-              <th>Uploaded File</th>
-              <th>Actions</th>
-              <th>Stats</th>
+            <th>Total Sent</th>
+              <th>Attempts</th>
+              <th>No Response</th>
+              <th>Interested</th>
+              <th>Not Interested</th>
+              <th>Not connected</th>
+              <th>Date Created</th>
+              
             </tr>
           </thead>
           <tbody>
-            {paginatedData.map((campaign) => (
+             {/* {paginatedData.map((campaign) => (
               <tr key={campaign.id}>
                 <td>{campaign.campaignName}</td>
                 <td>{new Date(campaign.dateTime).toLocaleString()}</td>
@@ -340,9 +392,68 @@ const IvrDashboard = () => {
                   <p>Double SMS: {campaign.stats.doubleSms}</p>
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            ))} */}
+
+
+
+{[
+      { name: "ACRE BL", totalSent: 5000, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "ACRE SME", totalSent: 4500, deliveredPercent: 75, interestedPercent: 65 },
+      { name: "CLIX", totalSent: 4200, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "Stashfin BKT", totalSent: 4600, deliveredPercent: 72, interestedPercent: 62 },
+      { name: "Stashfin 180+", totalSent: 5000, deliveredPercent: 85, interestedPercent: 75 },
+      { name: "Stashfin 90+", totalSent: 4800, deliveredPercent: 70, interestedPercent: 60 },
+      { name: "South Stashfin", totalSent: 5100, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Stashfin East", totalSent: 4400, deliveredPercent: 74, interestedPercent: 64 },
+      { name: "Onecard FSB", totalSent: 4700, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "Incred Mum", totalSent: 4300, deliveredPercent: 77, interestedPercent: 67 },
+      { name: "Loantap", totalSent: 4900, deliveredPercent: 79, interestedPercent: 69 },
+      { name: "Triumph", totalSent: 4500, deliveredPercent: 73, interestedPercent: 63 },
+      { name: "Unicard Writeoff", totalSent: 5200, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "Creditfair", totalSent: 4800, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Fatakpay", totalSent: 4700, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "ICICI", totalSent: 4900, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "ACRE BL", totalSent: 5000, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "ACRE SME", totalSent: 4500, deliveredPercent: 75, interestedPercent: 65 },
+      { name: "CLIX", totalSent: 4200, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "Stashfin BKT", totalSent: 4600, deliveredPercent: 72, interestedPercent: 62 },
+      { name: "Stashfin 180+", totalSent: 5000, deliveredPercent: 85, interestedPercent: 75 },
+      { name: "Stashfin 90+", totalSent: 4800, deliveredPercent: 70, interestedPercent: 60 },
+      { name: "South Stashfin", totalSent: 5100, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Stashfin East", totalSent: 4400, deliveredPercent: 74, interestedPercent: 64 },
+      { name: "Onecard FSB", totalSent: 4700, deliveredPercent: 82, interestedPercent: 72 },
+      { name: "Incred Mum", totalSent: 4300, deliveredPercent: 77, interestedPercent: 67 },
+      { name: "Loantap", totalSent: 4900, deliveredPercent: 79, interestedPercent: 69 },
+      { name: "Triumph", totalSent: 4500, deliveredPercent: 73, interestedPercent: 63 },
+      { name: "Unicard Writeoff", totalSent: 5200, deliveredPercent: 80, interestedPercent: 70 },
+      { name: "Creditfair", totalSent: 4800, deliveredPercent: 76, interestedPercent: 66 },
+      { name: "Fatakpay", totalSent: 4700, deliveredPercent: 78, interestedPercent: 68 },
+      { name: "ICICI", totalSent: 4900, deliveredPercent: 82, interestedPercent: 72 },
+
+
+
+    ].map((campaign, index) => {
+      const delivered = Math.round(campaign.totalSent * (campaign.deliveredPercent / 100));
+      const notDelivered = campaign.totalSent - delivered;
+      const interested = Math.round(delivered * (campaign.interestedPercent / 100));
+      const notInterested = delivered - interested;
+      const createdAt = new Date().toLocaleDateString();
+
+      return (
+        <tr key={index}>
+          <td>{campaign.name}</td>
+          <td>{campaign.totalSent}</td>
+          <td>{delivered}</td>
+          <td>{notDelivered}</td>
+          <td>{interested}</td>
+          <td>{notInterested}</td>
+          <td>{createdAt}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+
+         </table>
         <div className="pagination">
           {Array.from({ length: Math.ceil(filteredData.length / rowsPerPage) }, (_, i) => (
             <button key={i} onClick={() => handlePageChange(i + 1)}>
